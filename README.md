@@ -1,5 +1,5 @@
 # goxlr-on-linux
-Documentation and scripts to make GoXLR (Mini) work decent on Linux.
+Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 
 - All of the output and input channels are available (System, Chat, Music, ...)
 - The Faders work
