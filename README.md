@@ -11,12 +11,12 @@ Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 ## Requirements
 
 ### Linux Kernel >= 5.11.x
-Older kernels technically work, but most people experience a lot of audio stutter and skipping on older kernels. The stutter was fixed in 5.11 due to implicit_fb for USB audio devices.
+Older kernels technically work, but most people experience a lot of audio stutter and skipping on older kernels.
 
 ### PulseAudio
 A lot of Linux distributions ship with PulseAudio by default.
 
-### JACK2 and pulseaudio-module-jack: 
+### JACK2 and pulseaudio-module-jack
 
 #### Ubuntu
 ```
