@@ -25,10 +25,10 @@ sudo apt install jackd2 pulseaudio-module-jack
 
 ## Installation
 
-### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
-### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
-### 3. Add `source /path/to/script.sh` to your `.profile` file
-### 4. Reboot
+#### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
+#### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
+#### 3. Add `source /path/to/configure_goxlr.sh` to your `.profile` file
+#### 4. Reboot
 
 
 ## Usage
