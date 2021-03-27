@@ -41,7 +41,7 @@ If you've set the script to run on startup, everything should work out of the bo
 ### IMPORTANT
 
 
-> This script only works if the GoXLR is not turned off after a profile has been loaded in Windows. The GoXLR Mini, which is powered through USB, will lose it's configuration when you reboot unless you plug it into a port that ALWAYS supplies power.
+> This script only works if the GoXLR is not turned off after a profile has been loaded in Windows. The GoXLR Mini, which is powered through USB, will lose it's configuration when you reboot unless you plug it into a port that ALWAYS supplies power (even when the system is turned off or reboots).
 
 
 ## FAQ
