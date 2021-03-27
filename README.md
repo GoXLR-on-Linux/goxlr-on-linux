@@ -8,7 +8,8 @@ Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 - The Effects buttons DO NOT WORK
 - The Cough button DOES NOT WORK
 
-And also, you do still need a Windows system / VM to initialize the GoXLR **everytime it loses power**!
+And also, you do still need a Windows with the official GoXLR App to initialize the GoXLR **everytime it loses power**!
+That means either passing it through to a VM, or dual-booting.
 
 ## Requirements
 
