@@ -25,6 +25,10 @@ A lot of Linux distributions ship with PulseAudio by default.
 ```
 sudo apt install jackd2 pulseaudio-module-jack
 ```
+#### Manjaro/Arch Linux
+```
+sudo pacman -S jack2 jack2-dbus pulseaudio-jack
+```
 
 ## Installation
 
@@ -33,6 +37,13 @@ sudo apt install jackd2 pulseaudio-module-jack
 #### 3. Add `source /path/to/configure_goxlr.sh` to your `.profile` file
 #### 4. Reboot
 
+## Installation (Manjaro/Arch Linux)
+
+#### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
+#### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
+#### 3. Add `source /path/to/configure_goxlr.sh` to your `.bash_profile` file
+#### 4. Go to `cd /etc/security/limits.d` and put `audio.config` from repository
+#### 5. Reboot
 
 ## Usage
 If you've set the script to run on startup, everything should work out of the box.
@@ -73,6 +84,13 @@ You need to change the routing in Windows.
 ### Will the buttons ever work on Linux?
 We might be able to Reverse Engineer the USB signals and write our own simplified driver to have some of the more simple buttons (mute) working. I have no personal experience with this, so this is just a guess atm.
 
+## Known bug
+
+### Cannot lock down 107341338 byte memory area (Cannot allocate memory)
+FIX : Open cmd and enter : `usermod -a -G audio YOURNAMEUSER`
+
+### ERROR GoXLR_Source_Chat:XXX not a valid port
+FIX : Go to windows and load your profile to your GoXLR and never shutdown (usb powered dongle or bios usb powered) and restart to your os.
 
 ## Disclaimer
 This project is not in any way affiliated with TC-Hellicon. There is no official support for GoXLR (Mini) and Linux. This project, or any of its contributers cannot be held responsible for any issues you experience with your device, before or after using the scripts or documentation provided.
