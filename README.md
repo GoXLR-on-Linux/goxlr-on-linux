@@ -32,12 +32,14 @@ sudo pacman -S jack2 jack2-dbus pulseaudio-jack
 
 ## Installation
 
+### Ubuntu
+
 #### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
 #### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
 #### 3. Add `source /path/to/configure_goxlr.sh` to your `.profile` file
 #### 4. Reboot
 
-## Installation (Manjaro/Arch Linux)
+### Manjaro/Arch Linux
 
 #### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
 #### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
@@ -63,9 +65,6 @@ The script uses JACK2 to wire all of the GoXLR channels to custom PulseAudio sin
 ### How reliable is this?
 Personally I've been running this for a couple of weeks now and it has not failed once. If you do experience any instability or issues, feel free to create a ticket.
 
-### My audio is stuttering / skipping?
-Make sure you are running Kernel **5.11 or newer**.
-
 ### Why is there stutter / skipping on older kernels?
 Check out [this comment](https://bugzilla.kernel.org/show_bug.cgi?id=211211#c10) by one of the ALSA driver developers.
 
@@ -75,22 +74,25 @@ No. You could run a Windows VM and passthrough the GoXLR USB port and configure 
 ### How can I configure specific apps (Spotify, ...) to use a specific Output?
 One way to achieve this is using `pavucontrol`
 
-### My channels are muted and I can't unmute them
-The buttons don't work on Linux atm, you can only unmute the channels from Windows.
-
 ### How to change the routing?
 You need to change the routing in Windows.
 
 ### Will the buttons ever work on Linux?
 We might be able to Reverse Engineer the USB signals and write our own simplified driver to have some of the more simple buttons (mute) working. I have no personal experience with this, so this is just a guess atm.
 
-## Known bug
+## Common issues
 
 ### Cannot lock down 107341338 byte memory area (Cannot allocate memory)
 FIX : Open cmd and enter : `usermod -a -G audio YOURNAMEUSER`
 
 ### ERROR GoXLR_Source_Chat:XXX not a valid port
 FIX : Go to windows and load your profile to your GoXLR and never shutdown (usb powered dongle or bios usb powered) and restart to your os.
+
+### My audio is stuttering / skipping?
+Make sure you are running Kernel **5.11 or newer**.
+
+### My channels are muted and I can't unmute them
+The buttons don't work on Linux atm, you can only unmute the channels from Windows.
 
 ## Disclaimer
 This project is not in any way affiliated with TC-Hellicon. There is no official support for GoXLR (Mini) and Linux. This project, or any of its contributers cannot be held responsible for any issues you experience with your device, before or after using the scripts or documentation provided.
