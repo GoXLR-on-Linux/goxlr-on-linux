@@ -1,4 +1,7 @@
 # goxlr-on-linux
+
+[![Support Server](https://img.shields.io/discord/828348446775574548.svg?label=Discord&logo=Discord&colorB=7289da&style=flat)](https://discord.gg/Wbp3UxkX2j)
+
 Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 
 - All of the output and input channels are available (System, Chat, Music, ...)
@@ -83,10 +86,11 @@ We might be able to Reverse Engineer the USB signals and write our own simplifie
 ## Common issues
 
 ### Cannot lock down 107341338 byte memory area (Cannot allocate memory)
-FIX : Open cmd and enter : `usermod -a -G audio YOURNAMEUSER`
+Open a terminal and execute the following command : `usermod -a -G audio YOURNAMEUSER`
 
 ### ERROR GoXLR_Source_Chat:XXX not a valid port
-FIX : Go to windows and load your profile to your GoXLR and never shutdown (usb powered dongle or bios usb powered) and restart to your os.
+Go to Windows and load your profile to your GoXLR and make sure when rebooting into Linux, the GoXLR does not power reset.
+> GoXLR Mini: You will need a powered USB hub or a USB port on your Motherboard that supplies power even when the computer reboots/powers off
 
 ### My audio is stuttering / skipping?
 Make sure you are running Kernel **5.11 or newer**.
