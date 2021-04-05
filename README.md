@@ -6,7 +6,7 @@ Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 
 - All of the output and input channels are available (System, Chat, Music, ...)
 - The Faders work
-- The `!@#$?*` button works
+- The bleep button (`!@#$?*`) works
 - The Mute buttons DO NOT WORK
 - The Sampler buttons DO NOT WORK
 - The Effects buttons DO NOT WORK
