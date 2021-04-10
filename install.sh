@@ -22,9 +22,9 @@ if [[ ! -z $APT_GET_CMD ]]; then
 elif [[ ! -z $PACMAN_CMD ]]; then
     sudo pacman -S jack2 jack2-dbus pulseaudio-jack
     if [[ "$1" = "MINI" ]]; then
-        sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr_mini.sh" | sudo tee -a  "$HOME.bash_profile" > /dev/null
+        sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr_mini.sh" | sudo tee -a  ".bash_profile" > /dev/null
     else
-        sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr.sh" | sudo tee -a  "$HOME.bash_profile" > /dev/null
+        sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr.sh" | sudo tee -a  ".bash_profile" > /dev/null
     fi
     cd /etc/goxlr/goxlr-on-linux
     sudo cp audio.conf /etc/security/limits.d
