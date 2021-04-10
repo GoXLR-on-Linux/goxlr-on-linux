@@ -24,15 +24,7 @@ Older kernels technically work, but most people experience a lot of audio stutte
 A lot of Linux distributions ship with PulseAudio by default.
 
 ### JACK2 and pulseaudio-module-jack
-
-#### Ubuntu
-```
-sudo apt install jackd2 pulseaudio-module-jack
-```
-#### Manjaro/Arch Linux
-```
-sudo pacman -S jack2 jack2-dbus pulseaudio-jack
-```
+The required packages are installed during the installation
 
 ## Installation
 
