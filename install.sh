@@ -33,3 +33,5 @@ else
     echo "error can't install packages"
     exit 1;
 fi
+
+sudo reboot
