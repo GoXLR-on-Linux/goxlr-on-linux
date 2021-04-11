@@ -24,32 +24,12 @@ Older kernels technically work, but most people experience a lot of audio stutte
 A lot of Linux distributions ship with PulseAudio by default.
 
 ### JACK2 and pulseaudio-module-jack
-
-#### Ubuntu
-```
-sudo apt install jackd2 pulseaudio-module-jack
-```
-#### Manjaro/Arch Linux
-```
-sudo pacman -S jack2 jack2-dbus pulseaudio-jack
-```
+The required packages are installed during the installation
 
 ## Installation
 
-### Ubuntu
+#### Download the `install.sh` script, and execute it.
 
-#### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
-#### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
-#### 3. Add `source /path/to/configure_goxlr.sh` to your `.profile` file
-#### 4. Reboot
-
-### Manjaro/Arch Linux
-
-#### 1. Add the `configure_goxlr.sh` script somewhere on your system (/opt, or home folder)
-#### 2. Make sure to change the `hw:GoXLR,0` line to `hw:GoXLRMini,0` if you're using the Mini
-#### 3. Add `source /path/to/configure_goxlr.sh` to your `.bash_profile` file
-#### 4. Go to `cd /etc/security/limits.d` and put `audio.config` from repository
-#### 5. Reboot
 
 ## Usage
 If you've set the script to run on startup, everything should work out of the box.
