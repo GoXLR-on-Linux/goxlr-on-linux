@@ -5,7 +5,7 @@ After=default.target
 [Service]
 Type=simple
 RemainAfterExit=yes
-ExecStart=/tmp/startup_script.sh
+ExecStart=/etc/goxlr/goxlr-on-linux/configure_goxlr.sh
 TimeoutStartSec=0
 
 [Install]
