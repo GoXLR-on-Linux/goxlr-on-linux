@@ -1,0 +1,12 @@
+[Unit]
+Description=Run script at startup after all systemd services are loaded
+After=default.target
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/etc/goxlr/goxlr-on-linux/configure_goxlr.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
