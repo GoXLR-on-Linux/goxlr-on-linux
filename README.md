@@ -28,7 +28,8 @@ The required packages are installed during the installation
 
 ## Installation
 
-#### Download the `install.sh` script, and execute it.
+#### Download the `install.sh` script, and execute it with `sh install.sh`.
+If you want to install the script for the GoXLR Mini, you have to execute `sh install.sh MINI`.
 
 
 ## Usage
