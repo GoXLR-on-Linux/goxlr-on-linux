@@ -18,13 +18,13 @@ if [[ ! -z $APT_GET_CMD ]]; then
 
         sudo systemctl enable run-at-startup_mini.service
         cd /etc/goxlr/goxlr-on-linux
-        sudo cp run-at-startup_mini.service /etc/systemd/system/
+        sudo cp run-at-startup_mini.service /etc/systemd/system
 
     else
         sudo chmod u+x /etc/goxlr/goxlr-on-linux/configure_goxlr.sh
         sudo systemctl enable run-at-startup.service
         cd /etc/goxlr/goxlr-on-linux
-        sudo cp run-at-startup.service /etc/systemd/system/
+        sudo cp run-at-startup.service /etc/systemd/system
     fi
 
 elif [[ ! -z $PACMAN_CMD ]]; then
@@ -34,13 +34,13 @@ elif [[ ! -z $PACMAN_CMD ]]; then
 
         sudo systemctl enable run-at-startup_mini.service
         cd /etc/goxlr/goxlr-on-linux
-        sudo cp run-at-startup_mini.service /etc/systemd/system/
+        sudo cp run-at-startup_mini.service /etc/systemd/system
 
     else
         sudo chmod u+x /etc/goxlr/goxlr-on-linux/configure_goxlr.sh
         sudo systemctl enable run-at-startup.service
         cd /etc/goxlr/goxlr-on-linux
-        sudo cp run-at-startup.service /etc/systemd/system/
+        sudo cp run-at-startup.service /etc/systemd/system
     fi
     sudo cp audio.conf /etc/security/limits.d
 
