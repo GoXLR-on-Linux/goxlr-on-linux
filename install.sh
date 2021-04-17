@@ -8,22 +8,22 @@ sudo rm -rf /etc/goxlr
 
 sudo mkdir /etc/goxlr
 cd /etc/goxlr
-sudo git clone https://github.com/lm41/goxlr-on-linux.git
+sudo git clone https://github.com/T-Grave/goxlr-on-linux.git
 cd goxlr-on-linux
 
-if [[ ! -z $APT_GET_CMD ]]; then
+if [ ! -z $APT_GET_CMD ]; then
     cd $HOME
     sudo apt-get install jackd2 pulseaudio-module-jack
-    if [[ "$1" = "MINI" ]]; then
+    if [ "$1" = "MINI" ]; then
         sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr_mini.sh" >> ".profile"
     else
         sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr.sh" >> ".profile"
     fi
 
-elif [[ ! -z $PACMAN_CMD ]]; then
+elif [ ! -z $PACMAN_CMD ]; then
     sudo pacman -S jack2 jack2-dbus pulseaudio-jack
     cd $HOME
-    if [[ "$1" = "MINI" ]]; then
+    if [ "$1" = "MINI" ]; then
         sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr_mini.sh" | sudo tee -a  ".bash_profile" > /dev/null
     else
         sudo echo "source /etc/goxlr/goxlr-on-linux/configure_goxlr.sh" | sudo tee -a  ".bash_profile" > /dev/null
@@ -36,4 +36,9 @@ else
     exit 1;
 fi
 
-sudo reboot
+echo -n "Would you like to reboot now(y/n)? "
+old_stty_cfg=$(stty -g)
+stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+if echo "$answer" | grep -iq "^y" ;then
+    sudo reboot
+fi
