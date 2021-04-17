@@ -36,4 +36,9 @@ else
     exit 1;
 fi
 
-sudo reboot
+echo -n "Would you like to reboot now(y/n)? "
+old_stty_cfg=$(stty -g)
+stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+if echo "$answer" | grep -iq "^y" ;then
+    sudo reboot
+fi
