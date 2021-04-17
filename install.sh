@@ -8,7 +8,7 @@ sudo rm -rf /etc/goxlr
 
 sudo mkdir /etc/goxlr
 cd /etc/goxlr
-sudo git clone https://github.com/lm41/goxlr-on-linux.git
+sudo git clone https://github.com/T-Grave/goxlr-on-linux.git
 cd goxlr-on-linux
 
 if [[ ! -z $APT_GET_CMD ]]; then
