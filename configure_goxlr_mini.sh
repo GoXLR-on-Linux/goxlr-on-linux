@@ -4,7 +4,7 @@
 jack_control eps realtime true
 
 jack_control ds alsa
-jack_control dps device hw:GoXLRMini,0 # IMPORTANT: Change `GoXLR` to  `GoXLRMini` if you have the Mini
+jack_control dps device hw:GoXLRMini # IMPORTANT: Change `GoXLR` to  `GoXLRMini` if you have the Mini
 
 jack_control dps period 512
 jack_control dps rate 48000
