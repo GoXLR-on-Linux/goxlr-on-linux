@@ -36,9 +36,10 @@ else
     exit 1;
 fi
 
-echo -n "Would you like to reboot now(y/n)? "
-old_stty_cfg=$(stty -g)
-stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
-if echo "$answer" | grep -iq "^y" ;then
-    sudo reboot
+if [ "$1" = "MINI" ]; then
+    pulseaudio --kill
+    sh configure_goxlr_mini.sh
+else
+    pulseaudio --kill
+    sh configure_goxlr.sh
 fi
