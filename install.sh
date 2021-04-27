@@ -38,8 +38,8 @@ fi
 
 if [ "$1" = "MINI" ]; then
     pulseaudio --kill
-    sh configure_goxlr_mini.sh
+    sh /etc/goxlr/goxlr-on-linux/configure_goxlr_mini.sh
 else
     pulseaudio --kill
-    sh configure_goxlr.sh
+    sh /etc/goxlr/goxlr-on-linux/configure_goxlr.sh
 fi
