@@ -41,28 +41,8 @@ If you've set the script to run on startup, everything should work out of the bo
 > This script only works if the GoXLR is not turned off after a profile has been loaded in Windows. The GoXLR Mini, which is powered through USB, will lose it's configuration when you reboot unless you plug it into a port that ALWAYS supplies power (even when the system is turned off or reboots).
 
 
-## FAQ
+## [FAQ](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/FAQ)
 
-### How does it work?
-The script uses JACK2 to wire all of the GoXLR channels to custom PulseAudio sinks and sources.
-
-### How reliable is this?
-Personally I've been running this for a couple of weeks now and it has not failed once. If you do experience any instability or issues, feel free to create a ticket.
-
-### Why is there stutter / skipping on older kernels?
-Check out [this comment](https://bugzilla.kernel.org/show_bug.cgi?id=211211#c10) by one of the ALSA driver developers.
-
-### Can I configure my GoXLR through the GoXLR App on Linux?
-No. You could run a Windows VM and passthrough the GoXLR USB port and configure it through there.
-
-### How can I configure specific apps (Spotify, ...) to use a specific Output?
-One way to achieve this is using `pavucontrol`
-
-### How to change the routing?
-You need to change the routing in Windows.
-
-### Will the buttons ever work on Linux?
-We might be able to Reverse Engineer the USB signals and write our own simplified driver to have some of the more simple buttons (mute) working. I have no personal experience with this, so this is just a guess atm.
 
 ## Common issues
 
