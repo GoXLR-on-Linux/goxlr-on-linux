@@ -29,6 +29,8 @@ The required packages are installed during the installation
 ## Installation
 
 #### Download the `install.sh` script, and execute it.
+#### If you have a goxlr mini, you must run the script with the argument `MINI`.
+
 
 
 ## Usage
