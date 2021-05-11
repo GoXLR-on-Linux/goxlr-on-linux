@@ -1,10 +1,27 @@
-#! /bin/sh
+#!/bin/sh
+
+#Source config
+. CONFIG="/etc/goxlr/goxlr-on-linux/GoXLR.cfg"
 
 # Start Jack2 daemon
 jack_control eps realtime true
 
 jack_control ds alsa
-jack_control dps device hw:GoXLRMini # IMPORTANT: Change `GoXLR` to  `GoXLRMini` if you have the Mini
+
+#Use info from config to set device properly
+if [ $device = "full" ]; then
+    if [ $cmode = "false" ]; then
+        jack_control dps device hw:GoXLR
+    else
+        jack_control dps device hw:GoXLR,0
+    fi
+else
+    if [ $cmode = "false" ]; then
+        jack_control dps device hw:GoXLRMini
+    else
+        jack_control dps device hw:GoXLRMini,0
+    fi
+fi
 
 jack_control dps period 512
 jack_control dps rate 48000
@@ -61,4 +78,9 @@ jack_connect system:capture_4 GoXLR_Source_Chat:front-right
 # realtime-scheduling = yes
 # exit-idle-time = -1
 
+#Set profile of GoXLR to Multichannel Duplex. Might need another line for Mini?
+pactl set-card-profile alsa_card.usb-TC-Helicon_GoXLR-00 output:multichannel-output+input:multichannel-input
 
+#Set default input and output based off config, not sure how to do this yet
+#pacmd "set-default-sink jack_out.2"
+#pacmd "set-default-source jack_in.3"
