@@ -53,22 +53,22 @@ PACMAN_CMD=$(which pacman)
 sudo rm -rf /etc/goxlr
 
 sudo mkdir /etc/goxlr
-cd /etc/goxlr
+cd /etc/goxlr || exit 1
 sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git
-cd goxlr-on-linux
+cd goxlr-on-linux || exit 1
 
-if [ ! -z $APT_GET_CMD ]; then
-    cd $HOME
-    dpkg -s jackd2 &>/dev/null || sudo apt-get install jackd2
-    dpkg -s pulseaudio-module-jack &>/dev/null || sudo apt-get install pulseaudio-module-jack
-    sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" >> ".profile"
-elif [ ! -z $PACMAN_CMD ]; then
+if [ -n "$APT_GET_CMD" ]; then
+    cd $HOME || exit 1
+    dpkg -s jackd2 >word 2>&1 || sudo apt-get install jackd2
+    dpkg -s pulseaudio-module-jack >word 2>&1 || sudo apt-get install pulseaudio-module-jack
+    grep -iq "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" \.profile || sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".profile"
+elif [ -n "$PACMAN_CMD" ]; then
     sudo pacman -Qs jack2 || sudo pacman -S jack2
     sudo pacman -Qs jack2-dbus || sudo pacman -S jack2-dbus
     sudo pacman -Qs pulseaudio-jack || sudo pacman -S pulseaudio-jack
-    cd $HOME
-    sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a  ".bash_profile" > /dev/null
-    cd /etc/goxlr/goxlr-on-linux
+    cd $HOME || exit 1
+    grep -iq "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
+    cd /etc/goxlr/goxlr-on-linux || exit 1
     sudo cp audio.conf /etc/security/limits.d
 else
     echo "error can't install packages"
@@ -80,7 +80,7 @@ pulseaudio --kill
 clear
 
 #Run GoXLR
-sh /etc/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config cmode "true" && sh /etc/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && echo "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory." && sh /etc/goxlr/goxlr-on-linux/genlog.sh
+sh /etc/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config cmode "true" && sh /etc/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh /etc/goxlr/goxlr-on-linux/genlog.sh
 
 
 #echo "Output Devices"

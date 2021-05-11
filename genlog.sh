@@ -1,8 +1,8 @@
 #!/bin/sh
 
 (
-echo "Log Started: `date`"
-echo "User: `users`"
+echo "Log Started: $(date)"
+echo "User: $(users)"
 echo " "
 
 echo "==========================================="
@@ -99,7 +99,6 @@ case "${1:-}" in
 esac
 echo " "
 
-echo "Log Finished: `date`"
-) 2>&1 | sudo tee $Home/GoXLR_Log.txt
+echo "Log Finished: $(date)"
+) 2>&1 | sudo tee "$Home"/GoXLR_Log.txt
 
-read ""
