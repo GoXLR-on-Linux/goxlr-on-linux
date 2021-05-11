@@ -1,7 +1,14 @@
 #!/bin/sh
 
+sudo rm -rf /etc/goxlr
+
+sudo mkdir /etc/goxlr
+cd /etc/goxlr || exit 1
+sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git
+cd goxlr-on-linux || exit 1
+sudo git checkout installation
 #Config location
-CONFIG="/etc/goxlr/goxlr-on-linux/GoXLR.cfg"
+CONFIG="$HOME/GoXLR.cfg"
 
 #Create config if it doesn't exist
 if [ ! -e $CONFIG ]; then
@@ -50,12 +57,7 @@ ask_config "device" "GoXLR Full or Mini?" "full" "mini"
 APT_GET_CMD=$(which apt-get)
 PACMAN_CMD=$(which pacman)
 
-sudo rm -rf /etc/goxlr
 
-sudo mkdir /etc/goxlr
-cd /etc/goxlr || exit 1
-sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git
-cd goxlr-on-linux || exit 1
 
 if [ -n "$APT_GET_CMD" ]; then
     cd $HOME || exit 1
