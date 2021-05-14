@@ -13,6 +13,7 @@ CONFIG="$HOME/GoXLR.cfg"
 #Create config if it doesn't exist
 if [ ! -e $CONFIG ]; then
     sudo cp "/etc/goxlr/goxlr-on-linux/bin/raw.cfg" $CONFIG
+    sudo chown -c $USER $CONFIG
 fi
 
 #Source config
@@ -83,6 +84,10 @@ set_config "cmode" "false"
 
 #Run GoXLR
 sh /etc/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config "cmode" "true" && sh /etc/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh /etc/goxlr/goxlr-on-linux/genlog.sh
+
+
+#clear console
+clear
 
 #Config default output device
 echo "Output Devices"
@@ -172,8 +177,4 @@ if [ $selected ]; then
     pacmd "set-default-source $found"
 fi
 
-<<<<<<< HEAD
 #sudo chown -c $USER $CONFIG
-=======
-sudo chown -c $USER $CONFIG
->>>>>>> ef938dbfd05f57c02085219b51e8d5aeca839b19
