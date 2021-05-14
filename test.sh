@@ -1,3 +1,6 @@
+#!/bin/sh
+
+
 echo "Output Devices"
 case "${1:-}" in
     (""|list)
