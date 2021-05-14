@@ -8,7 +8,7 @@ sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git
 cd goxlr-on-linux || exit 1
 sudo git checkout installation
 #Config location
-CONFIG="/home/$user/GoXLR.cfg"
+CONFIG="/etc/goxlr/goxlr-on-linux/GoXLR.cfg"
 
 #Create config if it doesn't exist
 if [ ! -e $CONFIG ]; then
@@ -22,6 +22,9 @@ fi
 #Use is: set_config "valueToChange" "changeToWhat"
 set_config(){
     sudo sed -i "s/^\($1\s*=\s*\).*\$/\1$2/" $CONFIG
+
+    #Source the config again so information is up to date
+    . $CONFIG
 }
 
 #Ask user a config question
@@ -42,9 +45,6 @@ ask_config(){
             echo "$REPLY isn't an option."
         fi
     done
-
-    #Source the config again so information is up to date
-    . $CONFIG
 }
 
 #Ask type of GoXLR, full or mini
@@ -56,8 +56,6 @@ ask_config "device" "GoXLR Full or Mini?" "full" "mini"
 #Install
 APT_GET_CMD=$(which apt-get)
 PACMAN_CMD=$(which pacman)
-
-
 
 if [ -n "$APT_GET_CMD" ]; then
     cd $HOME || exit 1
@@ -79,42 +77,97 @@ fi
 
 #Restart PA
 pulseaudio --kill
-clear
+
+#Default cmode for testing both options
+set_config "cmode" "false"
 
 #Run GoXLR
-sh /etc/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config cmode "true" && sh /etc/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh /etc/goxlr/goxlr-on-linux/genlog.sh
+sh /etc/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config "cmode" "true" && sh /etc/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh /etc/goxlr/goxlr-on-linux/genlog.sh
 
+#Config default output device
+echo "Output Devices"
+case "${1:-}" in
+    (""|list)
+        outputs=$(pacmd list-sinks |
+        #Filter for jack.client_name, remove quotes, number results
+        grep -E 'jack.client_name' | sed 's/		jack.client_name = //g' | sed 's/"//g' | nl -ba -s') ')
+        echo "$outputs"
 
-#echo "Output Devices"
-#case "${1:-}" in
-#  (""|list)
-#    pacmd list-sinks |
-#      grep -E 'available.|index:|name:|properties:|jack.client_name|alsa.card_name|device.product.name'
-#    ;;
-#esac
-#echo " "
+        #Dummy var to trap the script in loop until an acceptable answer is input
+        allowed=
+        while [ ! $allowed ]; do
+            #Ask which device to use
+            echo "\nPlease type a number to pick a default output device (0 to skip):"
+            read REPLY
 
-#Ask user for default device (Not sure how to make use of this info yet)
+            #Set selection
+            selected=$(echo "$outputs" | grep -E $REPLY | sed 's/     '$REPLY') //g')
 
-#echo "Input Devices"
-#case "${1:-}" in
-#  (""|list)
-#    pacmd list-sources |
-#      grep -E 'available.|index:|name:|properties:|jack.client_name|alsa.card_name|device.product.name'
-#    ;;
-#esac
-#echo " "
+            #Check if valid option and name found
+            if [ $REPLY = '0' ]; then
+                echo "Skipping option."
+                allowed="true"
+            elif [ ! $selected ]; then
+            	echo "Invalid option selected."
+            else
+                echo $selected "was selected."
+                allowed="true"
+            fi
+        done
+    ;;
+esac
 
-#Ask user for default device (Not sure how to make use of this info yet)
+if [ $selected ]; then
+    #Filter for both names, remove $selected and get line before it
+    found=$(pacmd list-sinks | grep -E "$selected|name:" | grep -B 1 $selected | sed '/'$selected'/d' |
+    #Sed off unneeded characters
+    sed 's/[ 	<>]//g' | sed 's/name://g')
 
+    #Set config and apply default device
+    set_config "ouput" $selected
+    pacmd "set-default-sink $found"
+fi
 
-#TODO
-#Ask user for full or mini GoXLR --Done
-#Ask user PulseAudio or Pipewire? Maybe --Done but noted until we get there
-#Normal install --Done
-#Kill pulseaudio --Done
-#Run GoXLR --Done
-#Ask user if they see "XYZ is not a valid port" --Done
-#--If yes, run without the ,0 from hw:GoXLR,0 and retest --Done
-#--If no continue --Done
-#Print all devices ask user for defaults
+#Config default input device
+echo "Input Devices"
+case "${1:-}" in
+    (""|list)
+        inputs=$(pacmd list-sources |
+        #Filter for jack.client_name, remove quotes, number results
+        grep -E 'jack.client_name' | sed 's/		jack.client_name = //g' | sed 's/"//g' | nl -ba -s') ')
+        echo "$inputs"
+
+        #Dummy var to trap the script in loop until an acceptable answer is input
+        allowed=
+        while [ ! $allowed ]; do
+            #Ask which device to use
+            echo "\nPlease type a number to pick a default input device (0 to skip):"
+            read REPLY
+
+            #Set selection
+            selected=$(echo "$inputs" | grep -E $REPLY | sed 's/     '$REPLY') //g')
+
+            #Check if valid option and name found
+            if [ $REPLY = '0' ]; then
+                echo "Skipping option."
+                allowed="true"
+            elif [ ! $selected ]; then
+            	echo "Invalid option selected."
+            else
+                echo $selected "was selected."
+                allowed="true"
+            fi
+        done
+    ;;
+esac
+
+if [ $selected ]; then
+    #Filter for both names, remove $selected and get line before it
+    found=$(pacmd list-sources | grep -E "$selected|name:" | grep -B 1 $selected | sed '/'$selected'/d' |
+    #Sed off unneeded characters
+    sed 's/[ 	<>]//g' | sed 's/name://g')
+
+    #Set config and apply default device
+    set_config "input" $selected
+    pacmd "set-default-source $found"
+fi

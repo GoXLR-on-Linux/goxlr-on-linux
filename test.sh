@@ -7,13 +7,13 @@ case "${1:-}" in
         outputs=$(pacmd list-sinks |
         #Filter for jack.client_name, remove quotes, number results
         grep -E 'jack.client_name' | sed 's/		jack.client_name = //g' | sed 's/"//g' | nl -ba -s') ')
-        echo "$outputs \c"
+        printf "$outputs \c"
 
         #Dummy var to trap the script in loop until an acceptable answer is input
         allowed=
         while [ ! $allowed ]; do
             #Ask which device to use
-            echo "Please type a number to pick a default output device (0 to skip):"
+            printf "\nPlease type a number to pick a default output device (0 to skip):"
             read REPLY
 
             #Set selection
@@ -39,7 +39,7 @@ if [ $selected ]; then
     #Sed off unneeded characters
     sed 's/[ 	<>]//g' | sed 's/name://g')
 
-    echo "Device name is $found \c"
+    printf "Device name is $found \c"
     echo "Use 'pacmd list-sinks' to verify that '$selected' is '$found'"
 else
     echo "Must have skipped setting"

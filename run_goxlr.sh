@@ -1,13 +1,10 @@
 #!/bin/sh
 
 #Source config
-CONFIG="/home/$user/GoXLR.cfg"
-
-. $CONFIG
+. CONFIG="/etc/goxlr/goxlr-on-linux/GoXLR.cfg"
 
 # Start Jack2 daemon
 jack_control eps realtime true
-
 jack_control ds alsa
 
 #Use info from config to set device properly
@@ -30,7 +27,6 @@ jack_control dps rate 48000
 jack_control dps nperiods 3
 
 jack_control start
-
 
 # Load PA Sinks
 pactl load-module module-jack-sink channels=2 sink_properties=device.description=GoXLR_System client_name=GoXLR_Sink_System connect=no
@@ -83,6 +79,12 @@ jack_connect system:capture_4 GoXLR_Source_Chat:front-right
 #Set profile of GoXLR to Multichannel Duplex. Might need another line for Mini?
 pactl set-card-profile alsa_card.usb-TC-Helicon_GoXLR-00 output:multichannel-output+input:multichannel-input
 
-#Set default input and output based off config, not sure how to do this yet
-#pacmd "set-default-sink jack_out.2"
-#pacmd "set-default-source jack_in.3"
+#Set default output device
+#Find current index name from config name, trim unneeded characters, set default
+found=$(pacmd list-sink | grep -E "$ouput|name:" | grep -B 1 $ouput | sed '/'$ouput'/d' | sed 's/[ 	<>]//g' | sed 's/name://g')
+pacmd "set-default-sink $found"
+
+#Set default input device
+#Find current index name from config name, trim unneeded characters, set default
+found=$(pacmd list-sources | grep -E "$input|name:" | grep -B 1 $input | sed '/'$input'/d' | sed 's/[ 	<>]//g' | sed 's/name://g')
+pacmd "set-default-source $found"
