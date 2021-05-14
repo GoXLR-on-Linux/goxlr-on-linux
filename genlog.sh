@@ -100,4 +100,4 @@ esac
 echo " "
 
 echo "Log Finished: $(date)"
-) 2>&1 | sudo tee "./home/$user/GoXLR_Log.txt"
+) 2>&1 | sudo tee "/home/$user/GoXLR_Log.txt"
