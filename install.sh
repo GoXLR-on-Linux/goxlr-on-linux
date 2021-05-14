@@ -102,7 +102,7 @@ case "${1:-}" in
         allowed=
         while [ ! $allowed ]; do
             #Ask which device to use
-            echo "\nPlease type a number to pick a default output device (0 to skip):"
+            echo "Please type a number to pick a default output device (0 to skip):"
             read REPLY
 
             #Set selection
@@ -146,7 +146,7 @@ case "${1:-}" in
         allowed=
         while [ ! $allowed ]; do
             #Ask which device to use
-            echo "\nPlease type a number to pick a default input device (0 to skip):"
+            echo "Please type a number to pick a default input device (0 to skip):"
             read REPLY
 
             #Set selection
