@@ -4,8 +4,9 @@ sudo rm -rf /etc/goxlr
 
 sudo mkdir /etc/goxlr
 cd /etc/goxlr || exit 1
-sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git
+sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git || skip
 cd goxlr-on-linux || exit 1
+#remove line 10 before merging into main
 sudo git checkout installation
 #Config location
 CONFIG="$HOME/GoXLR.cfg"
@@ -48,11 +49,15 @@ ask_config(){
     done
 }
 
+echo
+
 #Ask type of GoXLR, full or mini
 ask_config "device" "GoXLR Full or Mini?" "full" "mini"
 
 #Ask which sound system to use, pulseaudio or pipewire
 #ask_config "type" "Which sound system?" "pulseaudio" "pipewire"
+
+echo "Working..."
 
 #Install
 APT_GET_CMD=$(which apt-get)
@@ -102,7 +107,7 @@ case "${1:-}" in
         allowed=
         while [ ! $allowed ]; do
             #Ask which device to use
-            echo "Please type a number to pick a default output device (0 to skip):"
+            echo -n "Please type a number to pick a default output device (0 to skip): "
             read REPLY
 
             #Set selection
@@ -116,6 +121,7 @@ case "${1:-}" in
             	echo "Invalid option selected."
             else
                 echo $selected "was selected."
+                echo
                 allowed="true"
             fi
         done
@@ -146,7 +152,7 @@ case "${1:-}" in
         allowed=
         while [ ! $allowed ]; do
             #Ask which device to use
-            echo "Please type a number to pick a default input device (0 to skip):"
+            echo -n "Please type a number to pick a default input device (0 to skip): "
             read REPLY
 
             #Set selection
@@ -160,6 +166,7 @@ case "${1:-}" in
             	echo "Invalid option selected."
             else
                 echo $selected "was selected."
+                echo
                 allowed="true"
             fi
         done
@@ -177,4 +184,5 @@ if [ $selected ]; then
     pacmd "set-default-source $found"
 fi
 
-#sudo chown -c $USER $CONFIG
+#Finished
+echo "Install complete. Configured using a '$device' GoXLR with '$ouput' as your default output and '$input' as your default input."
