@@ -1,7 +1,9 @@
 #!/bin/sh
 
 #Source config
-. CONFIG="/home/$user/GoXLR.cfg"
+CONFIG="/home/$user/GoXLR.cfg"
+
+. $CONFIG
 
 # Start Jack2 daemon
 jack_control eps realtime true
