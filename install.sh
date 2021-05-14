@@ -8,7 +8,7 @@ sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git
 cd goxlr-on-linux || exit 1
 sudo git checkout installation
 #Config location
-CONFIG="/etc/goxlr/goxlr-on-linux/GoXLR.cfg"
+CONFIG="$HOME/GoXLR.cfg"
 
 #Create config if it doesn't exist
 if [ ! -e $CONFIG ]; then
