@@ -171,3 +171,5 @@ if [ $selected ]; then
     set_config "input" $selected
     pacmd "set-default-source $found"
 fi
+
+sudo chown -c $USER $CONFIG
