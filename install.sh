@@ -172,4 +172,8 @@ if [ $selected ]; then
     pacmd "set-default-source $found"
 fi
 
+<<<<<<< HEAD
 #sudo chown -c $USER $CONFIG
+=======
+sudo chown -c $USER $CONFIG
+>>>>>>> ef938dbfd05f57c02085219b51e8d5aeca839b19
