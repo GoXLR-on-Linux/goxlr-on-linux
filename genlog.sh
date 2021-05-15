@@ -62,7 +62,7 @@ echo " "
 echo "==========================================="
 echo "=====Starting GoXLR for error catching====="
 echo "==========================================="
-sh /etc/goxlr/goxlr-on-linux/configure_goxlr.sh
+sh /usr/local/bin/goxlr/goxlr-on-linux/configure_goxlr.sh
 echo " "
 
 echo "==========================================="

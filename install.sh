@@ -1,19 +1,20 @@
 #!/bin/sh
 
 sudo rm -rf /etc/goxlr
+sudo rm -rf /usr/local/bin/goxlr
 
-sudo mkdir /etc/goxlr
-cd /etc/goxlr || exit 1
+sudo mkdir /usr/local/bin/goxlr
+cd /usr/local/bin/goxlr|| exit 1
 sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git || skip
 cd goxlr-on-linux || exit 1
 #remove line 10 before merging into main
-sudo git checkout installation
+sudo git checkout systemd2
 #Config location
-CONFIG="$HOME/GoXLR.cfg"
+CONFIG="/usr/local/bin/goxlr/goxlr-on-linux/GoXLR.cfg"
 
 #Create config if it doesn't exist
 if [ ! -e $CONFIG ]; then
-    sudo cp "/etc/goxlr/goxlr-on-linux/bin/raw.cfg" $CONFIG
+    sudo cp "/usr/local/bin/goxlr/goxlr-on-linux/bin/raw.cfg" $CONFIG
     sudo chown -c $USER $CONFIG
 fi
 
@@ -67,14 +68,14 @@ if [ -n "$APT_GET_CMD" ]; then
     cd $HOME || exit 1
     dpkg -s jackd2 >word 2>&1 || sudo apt-get install jackd2
     dpkg -s pulseaudio-module-jack >word 2>&1 || sudo apt-get install pulseaudio-module-jack
-    grep -iq "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" \.profile || sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".profile"
+    grep -iq "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" \.profile || sudo echo "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".profile"
 elif [ -n "$PACMAN_CMD" ]; then
     sudo pacman -Qs jack2 || sudo pacman -S jack2
     sudo pacman -Qs jack2-dbus || sudo pacman -S jack2-dbus
     sudo pacman -Qs pulseaudio-jack || sudo pacman -S pulseaudio-jack
     cd $HOME || exit 1
-    grep -iq "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
-    cd /etc/goxlr/goxlr-on-linux || exit 1
+    grep -iq "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
+    cd /usr/local/bin/goxlr/goxlr-on-linux || exit 1
     sudo cp audio.conf /etc/security/limits.d
 else
     echo "error can't install packages"
@@ -88,7 +89,7 @@ pulseaudio --kill
 set_config "cmode" "false"
 
 #Run GoXLR
-sh /etc/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config "cmode" "true" && sh /etc/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh /etc/goxlr/goxlr-on-linux/genlog.sh
+sh /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config "cmode" "true" && sh /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr|grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh /usr/local/bin/goxlr/goxlr-on-linux/genlog.sh
 
 
 #clear console
