@@ -62,7 +62,7 @@ echo " "
 echo "==========================================="
 echo "=====Starting GoXLR for error catching====="
 echo "==========================================="
-sh /etc/goxlr/goxlr-on-linux/configure_goxlr.sh
+sh /usr/local/bin/goxlr/goxlr-on-linux/configure_goxlr.sh
 echo " "
 
 echo "==========================================="
@@ -93,7 +93,7 @@ echo "======Print Inputs -- After Restarting====="
 echo "==========================================="
 case "${1:-}" in
   (""|list)
-    pacmd list-sources |
+    pacmd list -sources |
       grep -E 'available.|index:|name:|properties:|jack.client_name|alsa.card_name|device.product.name'
     ;;
 esac

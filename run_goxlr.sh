@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Source config
-CONFIG="$HOME/GoXLR.cfg"
+CONFIG="/usr/local/bin/goxlr/goxlr-on-linux/GoXLR.cfg"
 . $CONFIG
 
 # Start Jack2 daemon
