@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo rm -rf /etc/goxlr
+#sudo rm -rf /etc/goxlr
 sudo rm -rf /usr/local/bin/goxlr
 
 sudo mkdir /usr/local/bin/goxlr
@@ -55,6 +55,9 @@ echo
 #Ask type of GoXLR, full or mini
 ask_config "device" "GoXLR Full or Mini?" "full" "mini"
 
+#Ask if systemd would like to be used
+ask_config "systemd" "Would you like to start the Scrip with systemd?" "yes" "no"
+
 #Ask which sound system to use, pulseaudio or pipewire
 #ask_config "type" "Which sound system?" "pulseaudio" "pipewire"
 
@@ -68,13 +71,32 @@ if [ -n "$APT_GET_CMD" ]; then
     cd $HOME || exit 1
     dpkg -s jackd2 >word 2>&1 || sudo apt-get install jackd2
     dpkg -s pulseaudio-module-jack >word 2>&1 || sudo apt-get install pulseaudio-module-jack
-    grep -iq "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" \.profile || sudo echo "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".profile"
-elif [ -n "$PACMAN_CMD" ]; then
+    if [ $systemd = "yes" ]; then
+        cd /usr/local/bin/goxlr/goxlr-on-linux/ || exit
+        cp run_goxlr.sh /usr/local/bin/run_goxlr.sh
+        cp run-goxlr.service /etc/systemd/system/run-goxlr.service
+        sudo chmod 744 /usr/local/bin/run_goxlr.sh
+        sudo chmod 664 /etc/systemd/system/run-goxlr.service
+        sudo systemctl deamon-reload
+        sudo systemctl enable run-goxlr.service
+    else
+        grep -iq "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" \.profile || sudo echo "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".profile"
+    fi
+    elif [ -n "$PACMAN_CMD" ]; then
     sudo pacman -Qs jack2 || sudo pacman -S jack2
     sudo pacman -Qs jack2-dbus || sudo pacman -S jack2-dbus
     sudo pacman -Qs pulseaudio-jack || sudo pacman -S pulseaudio-jack
-    cd $HOME || exit 1
-    grep -iq "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
+    if [ $systemd = "yes" ]; then
+        cd /usr/local/bin/goxlr/goxlr-on-linux/ || exit
+        cp run_goxlr.sh /usr/local/bin/run_goxlr.sh
+        cp run-goxlr.service /etc/systemd/system/run-goxlr.service
+        sudo chmod 744 /usr/local/bin/run_goxlr.sh
+        sudo chmod 664 /etc/systemd/system/run-goxlr.service
+        sudo systemctl deamon-reload
+        sudo systemctl enable run-goxlr.service
+    else
+        grep -iq "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source /usr/local/bin/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
+    fi
     cd /usr/local/bin/goxlr/goxlr-on-linux || exit 1
     sudo cp audio.conf /etc/security/limits.d
 else
@@ -183,6 +205,11 @@ if [ $selected ]; then
     #Set config and apply default device
     set_config "input" $selected
     pacmd "set-default-source $found"
+fi
+
+if [ $systemd = "yes" ]; then
+    pulseaudio --kill
+    sudo systemctl start run-goxlr.service
 fi
 
 #Finished

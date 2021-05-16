@@ -1,0 +1,11 @@
+[Unit]
+Description=GoXLR Startup
+After=sound.target
+
+[Service]
+ExecStart=/usr/local/bin/run_goxlr.sh
+RestartSec=10
+Restart=on-failure
+
+[Install]
+WantedBy=graphical.target
