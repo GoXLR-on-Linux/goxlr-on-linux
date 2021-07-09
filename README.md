@@ -28,11 +28,8 @@ The required packages are installed during the installation
 
 ## Installation
 
-#### Download the `install.sh` script, and execute it.
-
->If you run into errors, try adding a `,0` after GoXLR or GoXLRmini in the `configure_goxlr` files.
-
-#### If you have a goxlr mini, you must run the script with the argument `MINI`.
+#### Download the `install.sh` script, and execute it. 
+The script should request your configuration and save it.
 
 ## Usage
 If you've set the script to run on startup, everything should work out of the box.
