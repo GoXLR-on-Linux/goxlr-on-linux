@@ -6,8 +6,6 @@ sudo mkdir /etc/goxlr
 cd /etc/goxlr || exit 1
 sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git || skip
 cd goxlr-on-linux || exit 1
-#remove line 10 before merging into main
-sudo git checkout installation
 #Config location
 CONFIG="$HOME/GoXLR.cfg"
 
