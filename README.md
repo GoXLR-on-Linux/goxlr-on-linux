@@ -28,7 +28,12 @@ The required packages are installed during the installation
 
 ## Installation
 
-#### Download the `install.sh` script, and execute it. 
+#### Download the `install.sh` script, and execute it:
+```
+wget https://github.com/GoXLR-on-Linux/goxlr-on-linux/raw/main/install.sh
+sudo chmod +x ./install.sh
+sudo ./install.sh
+```
 The script should request your configuration and save it.
 
 ## Usage
