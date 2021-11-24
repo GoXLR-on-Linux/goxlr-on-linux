@@ -29,11 +29,9 @@ The required packages are installed during the installation
 ## Installation
 
 #### Download the `install.sh` script, and execute it:
-These commands must be executed in the console. To do this, open the terminal, paste the following lines and press enter:
+This command must be executed in the console. You also need curl installed to use it. To do this, open the terminal, paste the following line and press enter:
 ```
-wget https://github.com/GoXLR-on-Linux/goxlr-on-linux/raw/main/install.sh
-sudo chmod +x ./install.sh
-sudo ./install.sh
+curl -fsSL https://github.com/GoXLR-on-Linux/goxlr-on-linux/raw/main/install.sh | sh
 ```
 The script should request your configuration and save it.
 
