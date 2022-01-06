@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sudo rm -rf $HOME/goxlr/
+sudo rm -rf $HOME/.goxlr/
 
-sudo mkdir $HOME/goxlr/
-cd $HOME/goxlr/ || exit 1
+sudo mkdir $HOME/.goxlr/
+cd $HOME/.goxlr/ || exit 1
 sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git || skip
 cd goxlr-on-linux || exit 1
 sudo tar -xzvC /usr/share/alsa/ -f alsa-goxlr.tar.gz
@@ -12,7 +12,7 @@ CONFIG="$HOME/GoXLR.cfg"
 
 #Create config if it doesn't exist
 if [ ! -e $CONFIG ]; then
-    sudo cp "$HOME/goxlr/goxlr-on-linux/bin/raw.cfg" $CONFIG
+    sudo cp "$HOME/.goxlr/goxlr-on-linux/bin/raw.cfg" $CONFIG
     sudo chown -c $USER $CONFIG
 fi
 
@@ -73,14 +73,14 @@ elif [ -n "$PACMAN_CMD" ]; then
     sudo pacman -Qs pulseaudio-jack || sudo pacman -S pulseaudio-jack
     cd $HOME || exit 1
     #grep -iq "source $USER/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source $USER/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
-    cd /etc/goxlr/goxlr-on-linux || exit 1
+    cd $HOME/.goxlr/goxlr-on-linux || exit 1
     sudo cp audio.conf /etc/security/limits.d
 else
     echo "error can't install packages"
     exit 1;
 fi
 
-sudo cp "$HOME/goxlr/goxlr-on-linux/run_goxlr.sh" /etc/profile.d
+sudo cp "$HOME/.goxlr/goxlr-on-linux/run_goxlr.sh" /etc/profile.d
 
 #Restart PA
 pulseaudio --kill
@@ -89,7 +89,7 @@ pulseaudio --kill
 set_config "cmode" "false"
 
 #Run GoXLR
-sh $HOME/goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config "cmode" "true" && sh $HOME/goxlr/goxlr-on-linux/run_goxlr.sh |grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh $HOME/goxlr/goxlr-on-linux/genlog.sh
+sh $HOME/.goxlr/goxlr-on-linux/run_goxlr.sh|grep "not a valid port" && set_config "cmode" "true" && sh $HOME/.goxlr/goxlr-on-linux/run_goxlr.sh |grep "not a valid port" && printf "Your GoXLR has been powercycled or was not found.\nPlease look in the wiki for other known issues,\nif it isn't a know issue Please create one on github\nand attach the GoXLR_Log.txt found in your home directory.\n" && sh $HOME/.goxlr/goxlr-on-linux/genlog.sh
 
 
 #clear console
