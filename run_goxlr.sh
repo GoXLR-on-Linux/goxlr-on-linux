@@ -82,7 +82,7 @@ pactl set-card-profile alsa_card.usb-TC-Helicon_GoXLR-00 output:multichannel-out
 
 #Set default output device
 #Find current index name from config name, trim unneeded characters, set default
-found=$(pacmd list-sink | grep -E "$ouput|name:" | grep -B 1 $ouput | sed '/'$ouput'/d' | sed 's/[ 	<>]//g' | sed 's/name://g')
+found=$(pacmd list-sinks | grep -E "$ouput|name:" | grep -B 1 $ouput | sed '/'$ouput'/d' | sed 's/[ 	<>]//g' | sed 's/name://g')
 pacmd "set-default-sink $found"
 
 #Set default input device
