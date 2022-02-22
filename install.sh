@@ -133,7 +133,7 @@ if [ $selected ]; then
     sed 's/[ 	<>]//g' | sed 's/name://g')
 
     #Set config and apply default device
-    set_config "ouput" $selected
+    set_config "output" $selected
     pacmd "set-default-sink $found"
 fi
 
