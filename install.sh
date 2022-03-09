@@ -70,6 +70,7 @@ elif [ -n "$PACMAN_CMD" ]; then
     sudo pacman -Qs jack2 || sudo pacman -S jack2
     sudo pacman -Qs jack2-dbus || sudo pacman -S jack2-dbus
     sudo pacman -Qs pulseaudio-jack || sudo pacman -S pulseaudio-jack
+    sudo pacman -Qs jack-example-tools || sudo pacman -S jack-example-tools
     cd $HOME || exit 1
     grep -iq "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" \.bash_profile || sudo echo "source /etc/goxlr/goxlr-on-linux/run_goxlr.sh" | sudo tee -a ".bash_profile"
     cd /etc/goxlr/goxlr-on-linux || exit 1
