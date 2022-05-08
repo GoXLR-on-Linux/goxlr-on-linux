@@ -33,7 +33,7 @@ These commands must be executed in the console. To do this, open the terminal, p
 ```
 wget https://github.com/GoXLR-on-Linux/goxlr-on-linux/raw/main/install.sh
 sudo chmod +x ./install.sh
-sudo ./install.sh
+sh ./install.sh
 ```
 The script should request your configuration and save it.
 
