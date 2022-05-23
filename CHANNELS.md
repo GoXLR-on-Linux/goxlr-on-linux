@@ -4,8 +4,8 @@ system:capture_1 - Broadcast Mix L
 system:capture_2 - Broadcast Mix R
 system:capture_3 - Chat L
 system:capture_4 - Chat R
-system:capture_5 - FX channels or Sampler channel on the regular GoXLR?
-system:capture_6
+system:capture_5 - Sample Capture L
+system:capture_6 - Sample Capture R
 system:capture_7 - FX channels or Sampler channel on the regular GoXLR?
 system:capture_8
 system:capture_9 - System L
