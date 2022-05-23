@@ -24,7 +24,7 @@ system:capture_21 - Console L
 system:capture_22 - Console R
 system:capture_23 - mono mic
 ```
-These channels are similar to 9+ in that they aren't affected by mixer settings (volume and mute), and are just raw, full volume audio output. The noise gate and EQ still appear to be applied here (so I would assume voice effects as well, but that is currently untested).
+\* These channels are similar to 9+ in that they aren't affected by mixer settings (volume and mute), and are just raw, full volume audio output. The noise gate and EQ still appear to be applied here (so I would assume voice effects as well, but that is currently untested).
 
 
 ## Outputs
