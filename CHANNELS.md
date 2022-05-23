@@ -4,8 +4,8 @@ system:capture_1 - Broadcast Mix L
 system:capture_2 - Broadcast Mix R
 system:capture_3 - Chat L
 system:capture_4 - Chat R
-system:capture_5 - Sample Capture L
-system:capture_6 - Sample Capture R
+system:capture_5 - Sampler Capture L
+system:capture_6 - Sampler Capture R
 system:capture_7 - Chat Mic L*
 system:capture_8 - Chat Mic R*
 system:capture_9 - System L
