@@ -23,6 +23,8 @@ Older kernels technically work, but most people experience a lot of audio stutte
 ### PulseAudio
 A lot of Linux distributions ship with PulseAudio by default.
 
+(Pipewire users, please [Check Here](https://github.com/GoXLR-on-Linux/goxlr-on-linux/blob/main/PIPEWIRE.md)).
+
 ### JACK2 and pulseaudio-module-jack
 The required packages are installed during the installation
 
