@@ -2,8 +2,16 @@
 
 sudo rm -rf /etc/goxlr
 
+APT_GET_CMD=$(which apt-get)
+PACMAN_CMD=$(which pacman)
+
 sudo mkdir /etc/goxlr
 cd /etc/goxlr || exit 1
+if [ -n "$APT_GET_CMD" ]; then
+    dpkg -s git >word 2<&1 || sudo apt-get install git
+elif [ -n "$PACMAN_CMD" ]; then
+    sudo pacman -Qs git || sudo pacman -S git
+fi
 sudo git clone https://github.com/GoXLR-on-Linux/goxlr-on-linux.git || skip
 cd goxlr-on-linux || exit 1
 #Config location
@@ -58,9 +66,6 @@ ask_config "device" "GoXLR Full or Mini?" "full" "mini"
 echo "Working..."
 
 #Install
-APT_GET_CMD=$(which apt-get)
-PACMAN_CMD=$(which pacman)
-
 if [ -n "$APT_GET_CMD" ]; then
     cd $HOME || exit 1
     dpkg -s jackd2 >word 2>&1 || sudo apt-get install jackd2
