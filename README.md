@@ -4,6 +4,15 @@
 
 Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 
+## Out-of-Box Support
+We're beginning to see out of box support for the GoXLR on various platforms which removes the need to run the script in this repository. You can check to see if you'll have this support on [This Wiki Page](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/Out-of-Box-Support). As support continues to grow across distributions, this repository will likely be wound down and turned into more of an informational resource.
+
+## The GoXLR Utility
+Behind the scenes, the team have been working on the [GoXLR Utility](https://github.com/GoXLR-on-Linux/goxlr-utility/), a tool which allows for all functionality of the GoXLR to work (including mute buttons, effects and samplers). It's still considered early-alpha, and as of yet hasn't had any formal releases, but does support a lot of the GoXLR functionality (initialising without windows, mute buttons, colouring, mic profiles, amongst others), so if you're feeling adventurous and would like to take it for a spin and help test, feel free!
+
+## Basic Functionality
+If you don't yet have out-of-box support, the script in this repository will provide some basic GoXLR functionality, without the utility, the following features of the GoXLR are supported:
+
 - All of the output and input channels are available (System, Chat, Music, ...)
 - The Faders work
 - The bleep button (`!@#$?*`) works
