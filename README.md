@@ -20,9 +20,9 @@ If your distribution isn't in that list, please check [This Wiki Page](https://g
 If you don't meet the minimum requirements for Out of the Box support this script is for you. Head over the the [Installation Instructions](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/Requirements-and-Installation-Instructions) to proceed.
 
 ## The GoXLR Utility
-When using only out-of-box support, or this script, you're required to initialise the GoXLR on Windows prior to using it on Linux.
+When using only out-of-box support, or this script, you will receive [Basic Functionality](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/Basic-Functionality) from the GoXLR.
 
-We've been working on the [GoXLR Utility](https://github.com/GoXLR-on-Linux/goxlr-utility/) to remove this requirement. It's a tool which allows for all functionality of the GoXLR to work (including mute buttons, effects and samplers) to function natively under Linux. It's still considered early-alpha so isn't feature complete, but does support some important features such as initialisation, profile and mic profile loading and management, button behaviours etc. The utility is available as a .deb or .rpm from the [Releases Page](https://github.com/GoXLR-on-Linux/goxlr-utility/releases), or from the Arch User Repository (AUR) as `goxlr-utility`. If you're using a GoXLR on Linux, we highly recommend you also use this to get the most out of your GoXLR!
+We've been working on the [GoXLR Utility](https://github.com/GoXLR-on-Linux/goxlr-utility/) to resolve this. It's a tool which allows for all functionality of the GoXLR to work (including mute buttons, effects and samplers) to function natively under Linux. It's still considered early-alpha so isn't feature complete, but does support some important features such as initialisation, profile and mic profile loading and management, button behaviours etc. The utility is available as a .deb or .rpm from the [Releases Page](https://github.com/GoXLR-on-Linux/goxlr-utility/releases), or from the Arch User Repository (AUR) as `goxlr-utility`. If you're using a GoXLR on Linux, we highly recommend you also use this to get the most out of your GoXLR!
 
  
 
