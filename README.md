@@ -22,7 +22,7 @@ If you don't meet the minimum requirements for Out of the Box support this scrip
 ## The GoXLR Utility
 When using only out-of-box support, or this script, you're required to initialise the GoXLR on Windows prior to using it on Linux.
 
-We've been working on the [GoXLR Utility](https://github.com/GoXLR-on-Linux/goxlr-utility/) to remove this requirement. It's a tool which allows for all functionality of the GoXLR to work (including mute buttons, effects and samplers). It's still considered early-alpha so isn't feature complete, but does support some important features such as initialisation, profile and mic profile loading and management, button behaviours etc. The utility is available as a .deb or .rpm from the [Releases Page](https://github.com/GoXLR-on-Linux/goxlr-utility/releases), or from the Arch User Repository (AUR) as `goxlr-utility`. If you're using a GoXLR on Linux, we highly recommend you also use this to get the most out of your GoXLR!
+We've been working on the [GoXLR Utility](https://github.com/GoXLR-on-Linux/goxlr-utility/) to remove this requirement. It's a tool which allows for all functionality of the GoXLR to work (including mute buttons, effects and samplers) to function natively under Linux. It's still considered early-alpha so isn't feature complete, but does support some important features such as initialisation, profile and mic profile loading and management, button behaviours etc. The utility is available as a .deb or .rpm from the [Releases Page](https://github.com/GoXLR-on-Linux/goxlr-utility/releases), or from the Arch User Repository (AUR) as `goxlr-utility`. If you're using a GoXLR on Linux, we highly recommend you also use this to get the most out of your GoXLR!
 
  
 
