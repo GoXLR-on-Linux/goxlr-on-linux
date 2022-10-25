@@ -1,5 +1,19 @@
 #!/bin/bash
 
+## First, check to see if we're running as root (we need to be in user-space to check for Pipewire)
+if [ "$EUID" -eq 0 ]; then
+	echo "Do not run this script as root.";
+	exit;
+fi
+
+## Check whether the audio system is currently pipewire (this is why we can't be root!)..
+pactl info | grep 'Server Name' | grep 'on PipeWire' >> /dev/null
+if [ "$?" -eq 0 ]; then
+	echo "This script isn't supported on Pipewire Based Systems";
+	exit;
+fi
+
+echo "This script requires root for several operations, and may prompt for your password as it runs."
 sudo rm -rf /etc/goxlr
 
 APT_GET_CMD=$(which apt-get)
