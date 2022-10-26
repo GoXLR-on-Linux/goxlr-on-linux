@@ -8,7 +8,7 @@ Documentation and scripts to make the GoXLR and GoXLR Mini useful on Linux.
 Firstly, plug in your GoXLR and check to see if the audio devices have automatically appeared (generally by clicking on the Sound applet, or 'Audio' in your System Settings). If you see the GoXLR Devices (Chat, System, Music, et al.), you *DO NOT* need to use this script. You should be good to go with [basic functionality](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/Basic-Functionality).
 
 If you are running one of the following distributions, and the devices don't show up automatically:
-* Ubuntu 22.10+
+* Ubuntu 22.04.1+
 * Pop!_OS 22.04+
 * Fedora 36+
 * Arch / Manjaro
