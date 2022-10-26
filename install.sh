@@ -7,8 +7,8 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 ## Check whether the audio system is currently pipewire (this is why we can't be root!)..
-pactl info | grep 'Server Name' | grep 'on PipeWire' >> /dev/null
-if [ "$?" -eq 0 ]; then
+pactl info | grep 'Server Name' | grep -v 'on PipeWire' >> /dev/null
+if [ "$?" -eq 1 ]; then
 	echo "This script isn't supported on Pipewire Based Systems";
 	exit;
 fi
