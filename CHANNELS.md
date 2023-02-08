@@ -8,6 +8,8 @@ system:capture_5 - Sampler Capture L
 system:capture_6 - Sampler Capture R
 system:capture_7 - Chat Mic L*
 system:capture_8 - Chat Mic R*
+
+** 
 system:capture_9 - System L
 system:capture_10 - System R
 system:capture_11 - Game L
@@ -24,8 +26,9 @@ system:capture_21 - Console L
 system:capture_22 - Console R
 system:capture_23 - mono mic
 ```
-\* These channels are similar to 9+ in that they aren't affected by mixer settings (volume and mute), and are just raw, full volume audio output. The noise gate and EQ still appear to be applied here (so I would assume voice effects as well, but that is currently untested).
+\* These channels are pre-mix but post-process. Mute and Volume aren't applied, but EQ, Gate, Compressor etc are.
 
+\** All channels after this point are pre-mix channels, with no volume or mute settings applied to them.
 
 ## Outputs
 ```
