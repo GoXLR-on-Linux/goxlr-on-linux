@@ -24,7 +24,7 @@ system:capture_19 - Line-In L
 system:capture_20 - Line-In R
 system:capture_21 - Console L
 system:capture_22 - Console R
-system:capture_23 - mono mic
+system:capture_23 - Dry Mic (unprocessed)
 ```
 \* These channels are pre-mix but post-process. Mute and Volume aren't applied, but EQ, Gate, Compressor etc are.
 
