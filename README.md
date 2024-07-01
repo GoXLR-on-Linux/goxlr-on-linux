@@ -16,7 +16,7 @@ and has binaries provided for various distributions.
 ## Known Issues
 Below are a list of currently known issues, with links to wiki pages on how to solve them. 
 
-* Audio playback is noticeably delayed
+* [Audio playback is noticeably delayed](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/Audio-Delays-when-using-PulseAudio)
 * [Channels not listing on Ubuntu 24.04](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/GoXLR-Listing-as-'Multichannel'-in-Ubuntu-24.04-(Noble-Numbat))
 
 ## Disclaimer
