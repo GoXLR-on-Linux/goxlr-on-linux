@@ -17,7 +17,7 @@ and has binaries provided for various distributions.
 Below are a list of currently known issues, with links to wiki pages on how to solve them. 
 
 * Audio playback is noticeably delayed
-* Channels not listing on Ubuntu 24.04
+* [Channels not listing on Ubuntu 24.04](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/GoXLR-Listing-as-'Multichannel'-in-Ubuntu-24.04-(Noble-Numbat))
 
 ## Disclaimer
 This project is not in any way affiliated with TC-Helicon. There is no official support for the GoXLR, or the GoXLR 
