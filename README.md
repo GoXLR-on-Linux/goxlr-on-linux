@@ -3,9 +3,9 @@
 
 
 ## Status
-As of 2024 the GoXLR has support in all major distributions. To prevent confusion, the scripts which were originally
-housed here have been removed. This repository is being preserved for general FAQs and support, and our
-[Discord](https://discord.gg/Wbp3UxkX2j) server will remain available for discussion!
+As of 2024 [basic functionality](https://github.com/GoXLR-on-Linux/goxlr-on-linux/wiki/Basic-Functionality) of the GoXLR is available
+in all major distributions. To prevent confusion, the scripts which were originally housed here have been removed. This repository is
+being preserved for general FAQs and support, and our [Discord](https://discord.gg/Wbp3UxkX2j) server will remain available for discussion!
 
 ## The [GoXLR Utility](https://github.com/GoXLR-on-Linux/goxlr-utility/)
 While the GoXLR works out the box, an application is still required to initialise and configure it. For that we have
